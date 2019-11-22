@@ -21,6 +21,7 @@ class MainActivity : Activity() {
 
     override fun onCreate(state: Bundle?) {
         super.onCreate(state)
+        //单纯测试git
         setContentView(R.layout.activity_main)
         activity = this
         val zxingview = zxingview
