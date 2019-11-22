@@ -10,6 +10,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import cn.bingoogolapple.qrcode.core.QRCodeView
 import cn.bingoogolapple.qrcode.zbar.ZBarView
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity(), QRCodeView.Delegate {
@@ -25,12 +26,13 @@ class MainActivity : AppCompatActivity(), QRCodeView.Delegate {
     override fun onScanQRCodeOpenCameraError() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
     override fun onCreate(state: Bundle?) {
         super.onCreate(state)
         setContentView(R.layout.activity_main)
 //        setSupportActionBar(findViewById(R.id.toolbar) as Toolbar)
 
-        mZBarView = findViewById(R.id.zbarview) as ZBarView
+        mZBarView = zbarview as ZBarView
         mZBarView!!.setDelegate(this)
     }
 
@@ -77,6 +79,7 @@ class MainActivity : AppCompatActivity(), QRCodeView.Delegate {
 
         }
     }
+
     override fun onCameraAmbientBrightnessChanged(isDark: Boolean) {
         // 这里是通过修改提示文案来展示环境是否过暗的状态，接入方也可以根据 isDark 的值来实现其他交互效果
         var tipText = mZBarView!!.getScanBoxView().tipText
