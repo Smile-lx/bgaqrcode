@@ -29,6 +29,9 @@ class MainActivity : Activity() {
         mQRCodeView!!.changeToScanQRCodeStyle() //扫二维码
         mQRCodeView!!.startSpot()  //开启全局一直扫描
         mQRCodeView!!.setDelegate(object : QRCodeView.Delegate {
+            override fun onCameraAmbientBrightnessChanged(isDark: Boolean) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
 
             override fun onScanQRCodeSuccess(result: String) {
                 Log.d("二维码扫描结果", "result:$result")
