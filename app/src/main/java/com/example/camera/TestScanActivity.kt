@@ -8,6 +8,7 @@ import android.os.Vibrator
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import cn.bingoogolapple.qrcode.core.BarcodeType
 import cn.bingoogolapple.qrcode.core.QRCodeView
 import cn.bingoogolapple.qrcode.zxing.ZXingView
 import com.google.zxing.BarcodeFormat
@@ -59,7 +60,7 @@ class TestScanActivity : AppCompatActivity(), QRCodeView.Delegate {
         mZXingView!!.startSpot() // 开始识别
     }
 
-    fun onCameraAmbientBrightnessChanged(isDark: Boolean) {
+    override fun onCameraAmbientBrightnessChanged(isDark: Boolean) {
         // 这里是通过修改提示文案来展示环境是否过暗的状态，接入方也可以根据 isDark 的值来实现其他交互效果
         var tipText = mZXingView!!.scanBoxView.tipText
         val ambientBrightnessTip = "\n环境过暗，请打开闪光灯"
@@ -97,37 +98,40 @@ class TestScanActivity : AppCompatActivity(), QRCodeView.Delegate {
             R.id.close_flashlight -> mZXingView!!.closeFlashlight() // 关闭闪光灯
             R.id.scan_one_dimension -> {
                 mZXingView!!.changeToScanBarcodeStyle() // 切换成扫描条码样式
-//                mZXingView!!.setType(BarcodeType.ONE_DIMENSION, null) // 只识别一维条码
+                mZXingView!!.setType(BarcodeType.ONE_DIMENSION, null) // 只识别一维条码
                 mZXingView!!.startSpotAndShowRect() // 显示扫描框，并开始识别
             }
             R.id.scan_two_dimension -> {
                 mZXingView!!.changeToScanQRCodeStyle() // 切换成扫描二维码样式
-//                mZXingView!!.setType(BarcodeType.TWO_DIMENSION, null) // 只识别二维条码
+                mZXingView!!.setType(BarcodeType.TWO_DIMENSION, null) // 只识别二维条码
                 mZXingView!!.startSpotAndShowRect() // 显示扫描框，并开始识别
             }
             R.id.scan_qr_code -> {
                 mZXingView!!.changeToScanQRCodeStyle() // 切换成扫描二维码样式
-//                mZXingView!!.setType(BarcodeType.ONLY_QR_CODE, null) // 只识别 QR_CODE
+                mZXingView!!.setType(BarcodeType.ONLY_QR_CODE, null) // 只识别 QR_CODE
                 mZXingView!!.startSpotAndShowRect() // 显示扫描框，并开始识别
             }
             R.id.scan_code128 -> {
                 mZXingView!!.changeToScanBarcodeStyle() // 切换成扫描条码样式
-//                mZXingView!!.setType(BarcodeType.ONLY_CODE_128, null) // 只识别 CODE_128
+                mZXingView!!.setType(BarcodeType.ONLY_CODE_128, null) // 只识别 CODE_128
                 mZXingView!!.startSpotAndShowRect() // 显示扫描框，并开始识别
             }
             R.id.scan_ean13 -> {
                 mZXingView!!.changeToScanBarcodeStyle() // 切换成扫描条码样式
-//                mZXingView!!.setType(BarcodeType.ONLY_EAN_13, null) // 只识别 EAN_13
+                mZXingView!!.setType(BarcodeType.ONLY_EAN_13, null) // 只识别 EAN_13
                 mZXingView!!.startSpotAndShowRect() // 显示扫描框，并开始识别
             }
             R.id.scan_high_frequency -> {
                 mZXingView!!.changeToScanQRCodeStyle() // 切换成扫描二维码样式
-//                mZXingView!!.setType(BarcodeType.HIGH_FREQUENCY, null) // 只识别高频率格式，包括 QR_CODE、UPC_A、EAN_13、CODE_128
+                mZXingView!!.setType(
+                    BarcodeType.HIGH_FREQUENCY,
+                    null
+                ) // 只识别高频率格式，包括 QR_CODE、UPC_A、EAN_13、CODE_128
                 mZXingView!!.startSpotAndShowRect() // 显示扫描框，并开始识别
             }
             R.id.scan_all -> {
                 mZXingView!!.changeToScanQRCodeStyle() // 切换成扫描二维码样式
-//                mZXingView!!.setType(BarcodeType.ALL, null) // 识别所有类型的码
+                mZXingView!!.setType(BarcodeType.ALL, null) // 识别所有类型的码
                 mZXingView!!.startSpotAndShowRect() // 显示扫描框，并开始识别
             }
             R.id.scan_custom -> {
@@ -145,24 +149,22 @@ class TestScanActivity : AppCompatActivity(), QRCodeView.Delegate {
                     java.lang.Boolean.TRUE
                 ) // 花更多的时间用于寻找图上的编码，优化准确性，但不优化速度
                 hintMap.put(DecodeHintType.CHARACTER_SET, "utf-8") // 编码字符集
-//                mZXingView!!.setType(BarcodeType.CUSTOM, hintMap) // 自定义识别的类型
+                mZXingView!!.setType(BarcodeType.CUSTOM, hintMap) // 自定义识别的类型
 
                 mZXingView!!.startSpotAndShowRect() // 显示扫描框，并开始识别
+
             }
-//            R.id.choose_qrcde_from_gallery -> {
-//                /*
-//                从相册选取二维码图片，这里为了方便演示，使用的是
-//                https://github.com/bingoogolapple/BGAPhotoPicker-Android
-//                这个库来从图库中选择二维码图片，这个库不是必须的，你也可以通过自己的方式从图库中选择图片
-//                 */
-//                val photoPickerIntent = BGAPhotoPickerActivity.IntentBuilder(this)
-//                    .cameraFileDir(null)
-//                    .maxChooseCount(1)
-//                    .selectedPhotos(null)
-//                    .pauseOnScroll(false)
-//                    .build()
-//                startActivityForResult(photoPickerIntent, REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY)
-//            }
+            R.id.choose_qrcde_from_gallery -> {
+                /*
+                从相册选取二维码图片，这里为了方便演示，使用的是
+                https://github.com/bingoogolapple/BGAPhotoPicker-Android
+                这个库来从图库中选择二维码图片，这个库不是必须的，你也可以通过自己的方式从图库中选择图片
+                 */
+                startActivityForResult(
+                    Intent(this, PictureActivity::class.java),
+                    REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY
+                )
+            }
         }
     }
 
