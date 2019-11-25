@@ -21,6 +21,12 @@
         android:theme="@style/AppTheme">
         <activity android:name=".TestScanActivity"></activity>
         <activity android:name=".PictureActivity"></activity>
+        <activity android:name=".CaptureFragmentActivity"></activity>
+        <activity android:name=".CodeActivity"></activity>
+        <activity android:name=".CustomActivity"></activity>
+        <activity android:name=".CustomCaptureActivity"></activity>
+        <activity android:name=".EasyCaptureActivity"></activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
