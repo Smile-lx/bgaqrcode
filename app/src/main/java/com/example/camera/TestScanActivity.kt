@@ -13,6 +13,7 @@ import cn.bingoogolapple.qrcode.core.QRCodeView
 import cn.bingoogolapple.qrcode.zxing.ZXingView
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.DecodeHintType
+import com.luck.picture.lib.PictureSelector
 import java.util.*
 
 class TestScanActivity : AppCompatActivity(), QRCodeView.Delegate {
@@ -53,6 +54,7 @@ class TestScanActivity : AppCompatActivity(), QRCodeView.Delegate {
     }
 
     override fun onScanQRCodeSuccess(result: String) {
+
         Log.i(TAG, "result:$result")
         title = "扫描结果为：$result"
         vibrate()
@@ -164,6 +166,14 @@ class TestScanActivity : AppCompatActivity(), QRCodeView.Delegate {
                     Intent(this, PictureActivity::class.java),
                     REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY
                 )
+                //自带得无法实现
+//                val photoPickerIntent = BGAPhotoPickerActivity.IntentBuilder(this)
+//                    .cameraFileDir(null)
+//                    .maxChooseCount(1)
+//                    .selectedPhotos(null)
+//                    .pauseOnScroll(false)
+//                    .build()
+//                startActivityForResult(photoPickerIntent, REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY)
             }
         }
     }
@@ -174,9 +184,10 @@ class TestScanActivity : AppCompatActivity(), QRCodeView.Delegate {
         mZXingView!!.startSpotAndShowRect() // 显示扫描框，并开始识别
 
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY) {
-//            val picturePath = BGAPhotoPickerActivity.getSelectedPhotos(data!!)[0]
-//            // 本来就用到 QRCodeView 时可直接调 QRCodeView 的方法，走通用的回调
-//            mZXingView!!.decodeQRCode(picturePath)
+            val picture = PictureSelector.obtainMultipleResult(data)[0]
+            // 本来就用到 QRCodeView 时可直接调 QRCodeView 的方法，走通用的回调
+            mZXingView!!.decodeQRCode(picture.androidQToPath)
+
 
             /*
             没有用到 QRCodeView 时可以调用 QRCodeDecoder 的 syncDecodeQRCode 方法

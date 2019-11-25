@@ -23,19 +23,19 @@ class PictureActivity : AppCompatActivity() {
         PictureSelector.create(this@PictureActivity)
             .openGallery(PictureMimeType.ofAll())// 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
             .loadImageEngine(GlideEngine.createGlideEngine())// 外部传入图片加载引擎，必传项
-            //                .theme(R.style.picture_default_style)// 主题样式设置 具体参考 values/styles   用法：R.style.picture.white.style
+            //.theme(R.style.picture_default_style)// 主题样式设置 具体参考 values/styles   用法：R.style.picture.white.style
             .maxSelectNum(9)// 最大图片选择数量
             .minSelectNum(1)// 最小选择数量
             .imageSpanCount(3)// 每行显示个数
-            //                .cameraFileName("")// 使用相机时保存至本地的文件名称,注意这个只在拍照时可以使用，选图时不要用
-            //                .isSingleDirectReturn(false)// 单选模式下是否直接返回
+            //.cameraFileName("")// 使用相机时保存至本地的文件名称,注意这个只在拍照时可以使用，选图时不要用
+            //.isSingleDirectReturn(false)// 单选模式下是否直接返回
             .previewImage(true)// 是否可预览图片
             //.querySpecifiedFormatSuffix(PictureMimeType.ofPNG())// 查询指定后缀格式资源
             .isCamera(true)// 是否显示拍照按钮
             .isZoomAnim(true)// 图片列表点击 缩放效果 默认true
             //.imageFormat(PictureMimeType.PNG)// 拍照保存图片格式后缀,默认jpeg
             //.setOutputCameraPath("/CustomPath")// 自定义拍照保存路径
-            //                .enableCrop(true)// 是否裁剪
+            //.enableCrop(true)// 是否裁剪
             .compressQuality(80)// 图片压缩后输出质量 0~ 100
             .synOrAsy(false)//同步true或异步false 压缩 默认同步
             //.compressSavePath(getPath())//压缩图片保存地址
@@ -147,7 +147,7 @@ class PictureActivity : AppCompatActivity() {
                         Log.i("tagtest", "Android Q 特有Path---->$media")
                         val bundle = intent.extras
                         // 设置要回传的数据
-                        data!!.putExtra("path", media.path)
+                        data!!.putExtra("filePath", media.path)
                         // 设置回传码和Intent
                         setResult(Activity.RESULT_OK, data)
                         finish()
