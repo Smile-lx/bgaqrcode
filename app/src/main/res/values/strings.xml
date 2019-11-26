@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Camera</string>
+    <string name="scanError">未识别到二维码/手机中的二维码识别度不高</string>
 </resources>
