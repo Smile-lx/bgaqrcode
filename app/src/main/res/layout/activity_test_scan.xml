@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/MatchMatch">
@@ -11,7 +12,7 @@
         app:qrcv_barcodeRectHeight="120dp"
         app:qrcv_borderColor="@android:color/white"
         app:qrcv_borderSize="1dp"
-        app:qrcv_cornerColor="@color/colorPrimaryDark"
+        app:qrcv_cornerColor="@color/bos_scan"
         app:qrcv_cornerDisplayType="center"
         app:qrcv_cornerLength="20dp"
         app:qrcv_cornerSize="3dp"
@@ -39,6 +40,7 @@
         app:qrcv_verticalBias="-1">
 
         <include layout="@layout/view_control" />
+
     </cn.bingoogolapple.qrcode.zxing.ZXingView>
 
 </RelativeLayout>

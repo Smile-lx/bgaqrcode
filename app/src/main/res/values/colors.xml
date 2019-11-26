@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FD7D3E</color>
-    <color name="colorPrimaryDark">#ADFF2F</color>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#040508</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorPrimaryDarkTrans">#CCf57257</color>
+    <color name="selector_btn_scan">#f6aa3e</color>
+    <color name="bos_scan"> #5EAE51</color>
 </resources>

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/MatchWrap"
     android:layout_alignParentBottom="true"
+    android:layout_marginBottom="80dp"
     android:padding="4dp"
     app:fl_horizontalChildGap="4dp"
     app:fl_isDistributionWhiteSpacing="true"
@@ -63,27 +64,30 @@
         android:layout_margin="5dip"
         android:orientation="horizontal" >
 
-    <TextView
+    <Button
         android:id="@+id/open_flashlight"
         style="@style/WrapWrapTv"
         android:text="打开闪光灯"
         android:layout_height="50dp"
-        android:layout_weight="1"/>
+        android:layout_marginLeft="28dp"
+        android:width="100dp"/>
 
 
-    <TextView
+    <Button
         android:id="@+id/close_flashlight"
         style="@style/WrapWrapTv"
         android:text="关闭闪光灯"
+        android:layout_marginLeft="20dp"
         android:layout_height="50dp"
-        android:layout_weight="1"/>
+        android:width="100dp"/>
 
-    <TextView
+    <Button
         android:id="@+id/choose_qrcde_from_gallery"
         style="@style/WrapWrapTv"
         android:text="识别图片中的码"
+        android:layout_marginLeft="20dp"
         android:layout_height="50dp"
-        android:layout_weight="1"/>
+        android:width="100dp"/>
     </LinearLayout>
 
 <!--    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
