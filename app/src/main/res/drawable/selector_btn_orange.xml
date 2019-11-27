@@ -10,8 +10,8 @@
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
             <solid android:color="#80858175" />
             <stroke android:width="1dip" android:color="#aea594" />
-            <solid android:color="@color/colorPrimaryDarkTrans" />
-            <corners android:radius="20dp" android:bottomLeftRadius="12dp" android:bottomRightRadius="12dp" android:topLeftRadius="12dp" android:topRightRadius="12dp" />
+            <solid android:color="#ff5454" />
+            <corners android:radius="5dp" android:bottomLeftRadius="5dp" android:bottomRightRadius="5dp" android:topLeftRadius="5dp" android:topRightRadius="5dp" />
         </shape>
     </item>
 
